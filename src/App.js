@@ -23,7 +23,7 @@ const Wrapper = styled.div`
     background-position: center;
     background-size: cover;
     z-index: -5;
-    opacity: .7;
+    opacity: .9;
   }
   h1 {
     font-size: 3.5rem;
@@ -41,7 +41,7 @@ const DrumMachine = styled.div`
   border-radius: 10px;
   border: 3px silver solid;
   background-color: #85754e;
-  box-shadow: 5px 5px 20px rgba(0,0,0,.8);
+  box-shadow: 5px 5px 20px rgba(0,0,0,.9);
   min-width: 300px;
 `
 const Display = styled.div` 
@@ -62,7 +62,7 @@ const Pad = styled.div`
   text-align: center;
   font-size: 2.2rem;
   background-color: #888;
-  color: #333;
+  color: #ddd;
   text-shadow: 0px 1px 2px #88888855;
   transition: background-color, box-shadow, transform .2s;
   box-shadow: ${props => props.trigered ? "inset 0 0 15px rgba(0,0,0,.5)" :  "2px 2px 5px rgba(0,0,0,.7)"};
