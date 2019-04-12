@@ -8,22 +8,28 @@ const Wrapper = styled.div`
   min-height: 100vh;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 200px 1fr;
+  grid-template-rows: 100px 1fr;
   align-items: center;
   justify-items: center;
-`
-const Title = styled.header`
-  text-align: center;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 3.8rem;
-  background-color: #333;
-  width: 100%;
-  height: 200px;
-  color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
+  z-index: 1;
+  position: relative;
+  ::before{
+    content: "";
+    height: 100%;
+    width: 100%;
+    background: url("https://images.pexels.com/photos/995301/pexels-photo-995301.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+    position: absolute;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    z-index: -5;
+    opacity: .7;
+  }
+  h1 {
+    font-size: 3.5rem;
+    text-shadow: 1px 1px 3px white;
+    text-align: center;
+  }
 `
 const DrumMachine = styled.div`
   display: grid;
@@ -31,11 +37,12 @@ const DrumMachine = styled.div`
   grid-template-rows: 100px 1fr 1fr 1fr;
   grid-gap: 1px;
   padding: .2rem .1rem;
+  margin-top: -15rem;
   border-radius: 10px;
   border: 3px silver solid;
   background-color: #85754e;
-  box-shadow: 5px 5px 10px rgba(0,0,0,.6);
-  width: 500px;
+  box-shadow: 5px 5px 20px rgba(0,0,0,.8);
+  min-width: 300px;
 `
 const Display = styled.div` 
   font-family: 'Orbitron',monospace;
@@ -65,6 +72,18 @@ const Pad = styled.div`
   &:hover{cursor: pointer;}
   > audio {
     border: 3px red solid;
+  }
+`
+const Footer = styled.footer`
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background-color: #333333dd;
+  color: #fff;
+  text-align: right;
+  padding: 1rem;
+  a{
+    text-decoration: none;
+    color: deeppink;
   }
 `
 
@@ -124,13 +143,15 @@ class App extends Component {
           {sample.letter}
           <audio src={sample.src} type="audio/wav" ref={sample.letter} className="clip" id={sample.letter}/>
         </Pad>)
+
     return (
-        <Wrapper>   
-          <Title style={{color: 'darkseagreen'}}>React Drumz</Title>
+        <Wrapper>
+          <h1>Drum Machine</h1>   
           <DrumMachine id="drum-machine">
             <Display id="display">{this.state.currentDisplay}</Display>
             { renderPads }
           </DrumMachine>
+          <Footer>Created by <a href="https://logikdev.fr" target="_blank">LogikDev</a></Footer>
       </Wrapper>
     );
   }
