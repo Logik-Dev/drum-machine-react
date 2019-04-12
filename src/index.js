@@ -9,7 +9,11 @@ const Wrapper = styled.div`
   min-height: 100vh;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 100px 1fr;
+  grid-template-rows: 100px 1fr 50px;
+  grid-template-areas:
+  "header"
+  "content"
+  "footer";
   align-items: center;
   justify-items: center;
   z-index: 1;
@@ -27,6 +31,7 @@ const Wrapper = styled.div`
     opacity: .9;
   }
   h1 {
+    grid-area: header;
     margin-top: 2rem;
     font-size: 3.5rem;
     text-shadow: 1px 1px 3px white;
@@ -34,6 +39,7 @@ const Wrapper = styled.div`
   }
 `
 const DrumMachine = styled.div`
+  grid-area: content;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 100px 1fr 1fr 1fr;
@@ -76,8 +82,8 @@ const Pad = styled.div`
   }
 `
 const Footer = styled.footer`
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
+  grid-area: footer;
+  width: 100%;
   background-color: #333333dd;
   color: #fff;
   text-align: right;
