@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import './App.css';
 import SAMPLES from './samples';
 import styled from 'styled-components';
@@ -26,6 +27,7 @@ const Wrapper = styled.div`
     opacity: .9;
   }
   h1 {
+    margin-top: 2rem;
     font-size: 3.5rem;
     text-shadow: 1px 1px 3px white;
     text-align: center;
@@ -37,7 +39,6 @@ const DrumMachine = styled.div`
   grid-template-rows: 100px 1fr 1fr 1fr;
   grid-gap: 1px;
   padding: .2rem .1rem;
-  margin-top: -15rem;
   border-radius: 10px;
   border: 3px silver solid;
   background-color: #85754e;
@@ -127,7 +128,7 @@ class App extends Component {
     const sample = SAMPLES.filter(sample => sample.letter === event.key.toUpperCase())[0];
     this.setTrigeredSample(sample);
   }
-  handleKeyUp(event){
+  handleKeyUp(){
     this.setState({trigeredSample: {}})
   }
   render() {
@@ -157,4 +158,5 @@ class App extends Component {
   }
 }
 
-export default App;
+ReactDOM.render(<App />,
+  document.getElementById('root'));
